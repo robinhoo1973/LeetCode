@@ -37,7 +37,8 @@ So the solution is to find 2 of the squares with corner by corner next to each o
 
 In fact, we don't have to to scramble the strings to convert the negative/positive diagonal into positive/negative, to save time, we just need to find them and mark the merged square as the positive/negative diagonal square. Now, let's check out our steps.
 
->[!NOTE]Steps:
+>[!NOTE]
+>Steps:
 >[^1]Find out all crosses.
 >[^2]Find out the all the diagonal lines with the representing squares.
 >[^3]Find the next to each square pairs and merge them into one positive/negative diagonal square.
