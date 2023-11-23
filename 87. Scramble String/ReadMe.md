@@ -39,19 +39,19 @@ In fact, we don't have to scramble the strings to convert the negative/positive 
 
 >[!NOTE]
 >Steps:
->[^1]Find out all crosses.
->[^2]Find out all the diagonal lines with the representing squares.
->[^3]Find the next to each square pair and merge them into one positive/negative diagonal square.
->[^4]Check after merge to determine whether we have our goal. If yes, return true.
->[^5]Record the new diagonal square into our database and repeat steps 3-5.
->[^6]If we have no luck finding suitable squares, we return sorry.
+>1. Find out all the crosses.
+>2. Find out all the diagonal lines with the representing squares.
+>3. Find the next to each square pair and merge them into one positive/negative diagonal square.
+>4. Check after merge to determine whether we have our goal. If yes, return true.
+>5. Record the new diagonal square into our database and repeat steps 3-5.
+>6. If we have no luck finding suitable squares, we return sorry.
 
 To improve our performance, we have some tips for you.
 >[!TIP]
->[^1]If in the matrix with a row or a column without any cross, it means we have a character not shown in the other string, which should not be a scrambled string pair.
->[^2]If the strings are composed of the same set of characters with the same quantities of each character, which means they passed the tip 1 exam, and the string length is less than 4, they should be scrambled.
->[^3]If the matrix of strings comes with a positive/negative diagonal line or both, they are the same string or reverse string pair and scrambled. (the positive diagonal line can easily determined by comparing the strings if equal)
->[^4]To find all diagonal lines by their length, we can scan the cross in two directions, down-left or down-right, to get all the diagonal lines according to the cross with its lengths.
+>1. If in the matrix with a row or a column without any cross, it means we have a character not shown in the other string, which should not be a scrambled string pair.
+>2. If the strings are composed of the same set of characters with the same quantities of each character, which means they passed the tip 1 exam, and the string length is less than 4, they should be scrambled.
+>3. If the matrix of strings comes with a positive/negative diagonal line or both, they are the same string or reverse string pair and scrambled. (the positive diagonal line can easily determined by comparing the strings if equal)
+>4. To find all diagonal lines by their length, we can scan the cross in two directions, down-left or down-right, to get all the diagonal lines according to the cross with its lengths.
 
 It looks like we can start with 1 and 2 steps.
 In general, we will create an NxN matrix to store the state of the crosses and find another data structure to archive the cross-related diagonal lines' information, such as possible lengths and starting point position. Moreover, we also notice that the matrix would be sparse matrix in most cases. We need to figure out a more efficient data structure to store both types of information.
@@ -75,12 +75,12 @@ X |  e|   |   | x |   |   |
              Fig. 3
 ```
 
-So, we create an array to store all the information related to a certain x row in our diagram is a column. In this way, we have x[0] with a dynamic length array to represent coordination y and lengths. It should look like this:
+So, we create an array to store all the information related to a certain x row in our diagram, which is a column. In this way, we have x[0] with a dynamic length array to represent coordination y and lengths. It should look like this:
 ```c_cpp
 x[0]={(0,1),(0,1),(0,2),(0,3),(0,4),(0,5)}
 ```
 
-Somehow, it's easy to understand and hard to manipulate by computing in a quick way. So we redesigned the data structure as shown below. We can quickly access the x, and y coordination and the length of the cross-associated diagonal.
+Somehow, it's easy to understand and hard to manipulate by computing in a quick way. So, we redesigned the data structure as shown below. We can quickly access the x and y coordination and the length of the cross-associated diagonal.
 ```c_cpp
 x[0]={1,2,3,4,5}
 y[0]={0,0,0,0,0}
