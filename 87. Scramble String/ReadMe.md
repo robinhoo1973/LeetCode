@@ -1,4 +1,4 @@
-#Different Way to Solve the Scramble String Problem
+# Different Way to Solve the Scramble String Problem
 
 Before we go further into the problem, let's put the strings into 2 dimension matrix like below in Fig. 1 with example strings "great" and "rgeat". And cross out the same characters in the appropriate positions of the matrix.
 ```
